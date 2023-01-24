@@ -5,15 +5,23 @@ using System;
 
 public class BoatMovement : MonoBehaviour
 {
+    //Map
+    [Header("Map")]
     public Vector3 originPosition;
     public int mapSizeX = 20;
     public int mapSizeY = 20;
     private int cellSize = 1;
-    public GameObject tile;
-
     private Map map;
+
+    //GameObjects
+    [Header("GameObjects")]
+    public GameObject tile;
+    public GameObject boatPrefab;
+    public GameObject pathPrefab;
+    private GameObject boat;
+    
+    // EventHandler
     private DirectionEventHandler directionEventHandler;
-    // Start is called before the first frame update
     void Start()
     {
         directionEventHandler = DirectionEventHandler.instance;
@@ -27,23 +35,48 @@ public class BoatMovement : MonoBehaviour
                 tempTile.transform.position =  map.mapGrid[x, y].centerPosition;
             }
         }
+        boat = GameObject.Instantiate(boatPrefab);
+        boat.transform.position = map.GetCenteredPosition(5, 10);
     }
 
     private void Movement(object sender, DirectionEventHandler.DirectionArguments args)
     {
+        int x, y;
+        map.GetXY(out x, out y, boat.transform.position);
+        Debug.Log("till here");
         switch (args.direction)
         {
             case DirectionEventHandler.direction.north:
-                Debug.Log("north");
+                if (map.CheckIfEmpty(x, y + 1))
+                {
+                    map.DeleteUnit(x, y);
+                    map.SetUnit(boat, x, y + 1);
+                    boat.transform.position = map.GetCenteredPosition(x, y + 1);
+                }
                 break;
             case DirectionEventHandler.direction.south:
-                Debug.Log("south");
+                if (map.CheckIfEmpty(x, y - 1))
+                {
+                    map.DeleteUnit(x, y);
+                    map.SetUnit(boat, x, y - 1);
+                    boat.transform.position = map.GetCenteredPosition(x, y - 1);
+                }
                 break;
             case DirectionEventHandler.direction.east:
-                Debug.Log("east");
+                if (map.CheckIfEmpty(x + 1, y))
+                {
+                    map.DeleteUnit(x, y);
+                    map.SetUnit(boat, x + 1, y);
+                    boat.transform.position = map.GetCenteredPosition(x + 1, y);
+                }
                 break;
             case DirectionEventHandler.direction.west:
-                Debug.Log("west");
+                if (map.CheckIfEmpty(x - 1, y))
+                {
+                    map.DeleteUnit(x, y);
+                    map.SetUnit(boat, x - 1, y);
+                    boat.transform.position = map.GetCenteredPosition(x - 1, y);
+                }
                 break;
         }
     }

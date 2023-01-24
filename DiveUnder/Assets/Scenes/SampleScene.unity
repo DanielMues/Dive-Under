@@ -156,6 +156,8 @@ MonoBehaviour:
   mapSizeX: 20
   mapSizeY: 20
   tile: {fileID: 468122879200466660, guid: 06ff4f6b85bd32e4e88fe869c9838e49, type: 3}
+  boatPrefab: {fileID: 583090450530860878, guid: 82c76cfd40aefd1488302d45b5ee3b16, type: 3}
+  pathPrefab: {fileID: 0}
 --- !u!4 &237321404
 Transform:
   m_ObjectHideFlags: 0
@@ -644,15 +646,39 @@ Tilemap:
   m_Enabled: 1
   m_Tiles: {}
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileSpriteArray:
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  m_TileMatrixArray:
+  - m_RefCount: 0
+    m_Data:
+      e00: 0
+      e01: 0
+      e02: -2.1006438e-19
+      e03: -2.1006438e-19
+      e10: 0
+      e11: 0
+      e12: 7.3e-43
+      e13: 7.3e-43
+      e20: 2.7444512e+32
+      e21: 1e-45
+      e22: 5.9677684e-29
+      e23: 3.7173063e+19
+      e30: 4.5904e-41
+      e31: 0
+      e32: 7.31e-43
+      e33: 7.34e-43
+  m_TileColorArray:
+  - m_RefCount: 0
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Size: {x: 24, y: 10, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:

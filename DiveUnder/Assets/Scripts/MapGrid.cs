@@ -176,4 +176,30 @@ public class Map
 
         return true;
     }
+
+    public bool CheckIfEmpty(Vector3 position)
+    {
+        int x, y;
+        try
+        {
+            GetXY(out x, out y, position);
+            return mapGrid[x, y].unit == null;
+        }
+        catch (IndexOutOfRangeException)
+        {
+            throw new IndexOutOfRangeException();
+        }
+    }
+
+    public bool CheckIfEmpty(int x, int y)
+    {
+        if(x >= 0 && x < mapSizeX  &&  y >= 0 && y < mapSizeY)
+        {
+            return mapGrid[x, y].unit == null;
+        }
+        else
+        {
+            throw new IndexOutOfRangeException();
+        }
+    }
 }
