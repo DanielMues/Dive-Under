@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using System;
 
 public class BoatMovement : MonoBehaviour
@@ -22,6 +23,10 @@ public class BoatMovement : MonoBehaviour
     
     // EventHandler
     private DirectionEventHandler directionEventHandler;
+
+    // Tilemap
+    public ITilemap Island;
+
     void Start()
     {
         directionEventHandler = DirectionEventHandler.instance;
@@ -43,13 +48,17 @@ public class BoatMovement : MonoBehaviour
     {
         int x, y;
         map.GetXY(out x, out y, boat.transform.position);
-        Debug.Log("till here");
         switch (args.direction)
         {
             case DirectionEventHandler.direction.north:
                 if (map.CheckIfEmpty(x, y + 1))
                 {
                     map.DeleteUnit(x, y);
+                    // spawn path
+                    GameObject newPath = GameObject.Instantiate(pathPrefab);
+                    map.SetUnit(newPath, x, y);
+                    newPath.transform.position = map.GetCenteredPosition(x, y);
+                    // move boat
                     map.SetUnit(boat, x, y + 1);
                     boat.transform.position = map.GetCenteredPosition(x, y + 1);
                 }
@@ -58,6 +67,11 @@ public class BoatMovement : MonoBehaviour
                 if (map.CheckIfEmpty(x, y - 1))
                 {
                     map.DeleteUnit(x, y);
+                    // spawn path
+                    GameObject newPath = GameObject.Instantiate(pathPrefab);
+                    map.SetUnit(newPath, x, y);
+                    newPath.transform.position = map.GetCenteredPosition(x, y);
+                    // move boat
                     map.SetUnit(boat, x, y - 1);
                     boat.transform.position = map.GetCenteredPosition(x, y - 1);
                 }
@@ -66,6 +80,11 @@ public class BoatMovement : MonoBehaviour
                 if (map.CheckIfEmpty(x + 1, y))
                 {
                     map.DeleteUnit(x, y);
+                    // spawn path
+                    GameObject newPath = GameObject.Instantiate(pathPrefab);
+                    map.SetUnit(newPath, x, y);
+                    newPath.transform.position = map.GetCenteredPosition(x, y);
+                    // move boat
                     map.SetUnit(boat, x + 1, y);
                     boat.transform.position = map.GetCenteredPosition(x + 1, y);
                 }
@@ -74,6 +93,11 @@ public class BoatMovement : MonoBehaviour
                 if (map.CheckIfEmpty(x - 1, y))
                 {
                     map.DeleteUnit(x, y);
+                    // spawn path
+                    GameObject newPath = GameObject.Instantiate(pathPrefab);
+                    map.SetUnit(newPath, x, y);
+                    newPath.transform.position = map.GetCenteredPosition(x, y);
+                    // move boat
                     map.SetUnit(boat, x - 1, y);
                     boat.transform.position = map.GetCenteredPosition(x - 1, y);
                 }
@@ -81,3 +105,5 @@ public class BoatMovement : MonoBehaviour
         }
     }
 }
+
+
