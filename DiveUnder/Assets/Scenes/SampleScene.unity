@@ -158,6 +158,7 @@ MonoBehaviour:
   tile: {fileID: 468122879200466660, guid: 06ff4f6b85bd32e4e88fe869c9838e49, type: 3}
   boatPrefab: {fileID: 583090450530860878, guid: 82c76cfd40aefd1488302d45b5ee3b16, type: 3}
   pathPrefab: {fileID: 6056911984970737412, guid: 67f5b51f73502b849aa17e79bbdad0ce, type: 3}
+  island: {fileID: 1510722163}
 --- !u!4 &237321404
 Transform:
   m_ObjectHideFlags: 0
@@ -918,6 +919,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1956744157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956744158}
+  m_Layer: 0
+  m_Name: positionfinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1956744158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956744157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.27, y: 11.17, z: -0.27675298}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143809806
 GameObject:
   m_ObjectHideFlags: 0

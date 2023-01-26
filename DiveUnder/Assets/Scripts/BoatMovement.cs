@@ -25,7 +25,7 @@ public class BoatMovement : MonoBehaviour
     private DirectionEventHandler directionEventHandler;
 
     // Tilemap
-    public ITilemap Island;
+    public Tilemap island;
 
     void Start()
     {
@@ -42,6 +42,7 @@ public class BoatMovement : MonoBehaviour
         }
         boat = GameObject.Instantiate(boatPrefab);
         boat.transform.position = map.GetCenteredPosition(5, 10);
+        LoadIslandsIntoMap();
     }
 
     private void Movement(object sender, DirectionEventHandler.DirectionArguments args)
@@ -102,6 +103,22 @@ public class BoatMovement : MonoBehaviour
                     boat.transform.position = map.GetCenteredPosition(x - 1, y);
                 }
                 break;
+        }
+    }
+
+    private void LoadIslandsIntoMap()
+    {
+        for (int x = 0; x < mapSizeX; x++)
+        {
+            for (int y = 0; y < mapSizeY; y++)
+            {
+                Vector3 v3temp = map.GetCenteredPosition(x, y);
+                Vector3Int temp = Vector3Int.FloorToInt(new Vector3(v3temp.x, v3temp.y, 0));
+                if (island.HasTile(temp))
+                {
+                    map.SetUnit(tile, x, y);
+                }
+            }
         }
     }
 }
