@@ -23,6 +23,7 @@ public class BoatMovement : MonoBehaviour
     
     // EventHandler
     private DirectionEventHandler directionEventHandler;
+    private AbilityEventHandler abilityEventHandler;
 
     // Tilemap
     public Tilemap island;
@@ -31,6 +32,7 @@ public class BoatMovement : MonoBehaviour
     {
         directionEventHandler = DirectionEventHandler.instance;
         directionEventHandler.setDirection += Movement;
+        abilityEventHandler = AbilityEventHandler.instance;
         map = new Map(originPosition, mapSizeX, mapSizeY, cellSize, cellSize);
         for (int x = 0; x < mapSizeX; x++)
         {
@@ -62,6 +64,7 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x, y + 1);
                     boat.transform.position = map.GetCenteredPosition(x, y + 1);
+                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.south:
@@ -75,6 +78,7 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x, y - 1);
                     boat.transform.position = map.GetCenteredPosition(x, y - 1);
+                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.east:
@@ -88,6 +92,7 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x + 1, y);
                     boat.transform.position = map.GetCenteredPosition(x + 1, y);
+                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.west:
@@ -101,6 +106,7 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x - 1, y);
                     boat.transform.position = map.GetCenteredPosition(x - 1, y);
+                    abilityEventHandler.upCountAbility();
                 }
                 break;
         }
