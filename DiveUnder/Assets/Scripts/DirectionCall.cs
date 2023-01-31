@@ -12,7 +12,7 @@ public class DirectionCall : MonoBehaviour
         directionEventHandler = DirectionEventHandler.instance;
     }
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
         directionEventHandler.CallDirection(direction, player);
     }
