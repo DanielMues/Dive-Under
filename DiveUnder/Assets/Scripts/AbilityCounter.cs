@@ -6,7 +6,7 @@ using System;
 public class AbilityCounter : MonoBehaviour
 {
     
-    private enum ability {mine, radar}
+    public enum ability {mine, radar}
     private ability selectedAbility;
 
     private int minMine = 0;
@@ -30,9 +30,9 @@ public class AbilityCounter : MonoBehaviour
         abilityEventHandler.increaseAbility += increaseCounterAbility;
     }
 
-    public void increaseCounterAbility(object sender, EventArgs args)
+    public void increaseCounterAbility(object sender, AbilityEventHandler.AbilityArguments args)
     {
-        switch (selectedAbility)
+        switch (args.ability)
         {
             case ability.mine:
                 if(currentMine <= maxMine)

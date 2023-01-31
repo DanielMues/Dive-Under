@@ -11,10 +11,15 @@ public class AbilityEventHandler : MonoBehaviour
         instance = this;
     }
 
-    public event EventHandler<EventArgs> increaseAbility;
+    public event EventHandler<AbilityArguments> increaseAbility;
 
-    public void upCountAbility()
+    public class AbilityArguments : EventArgs
     {
-        increaseAbility?.Invoke(this, new EventArgs());
+        public AbilityCounter.ability ability;
+    }
+
+    public void upCountAbility(AbilityCounter.ability ability)
+    {
+        increaseAbility?.Invoke(this, new AbilityArguments { ability = ability });
     }
 }

@@ -64,7 +64,6 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x, y + 1);
                     boat.transform.position = map.GetCenteredPosition(x, y + 1);
-                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.south:
@@ -78,7 +77,6 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x, y - 1);
                     boat.transform.position = map.GetCenteredPosition(x, y - 1);
-                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.east:
@@ -92,7 +90,6 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x + 1, y);
                     boat.transform.position = map.GetCenteredPosition(x + 1, y);
-                    abilityEventHandler.upCountAbility();
                 }
                 break;
             case DirectionEventHandler.direction.west:
@@ -106,7 +103,6 @@ public class BoatMovement : MonoBehaviour
                     // move boat
                     map.SetUnit(boat, x - 1, y);
                     boat.transform.position = map.GetCenteredPosition(x - 1, y);
-                    abilityEventHandler.upCountAbility();
                 }
                 break;
         }
